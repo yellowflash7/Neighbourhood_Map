@@ -182,7 +182,7 @@ function popInfoWindow(markr, infowindow) {
         var wikiElem = '';
 
         // Use streetview service to fetch the streetview image withe the 40m radius of marker position
-        streetViewService.getPanoramaByLocation(markr.position, radii, getStreetView);
+        //streetViewService.getPanoramaByLocation(markr.position, radii, getStreetView);
         // open the infowindow on marker
         infowindow.open(map, markr);
         var wikiTout = setTimeout(function() {
