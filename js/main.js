@@ -161,6 +161,33 @@ function sboxMethod(value) {
 //funtion to fill infowindow with street view and wikipedia articles
 function popInfoWindow(markr, infowindow) {
     var flag = true;
+     //check the status if ok then get the streetview and set the panorama
+    function getStreetView(data, status) {
+        if (status == google.maps.StreetViewStatus.OK) {
+            var nearStreetLoc = data.location.latLng;
+            var head = google.maps.geometry.spherical.computeHeading(nearStreetLoc, markr.position);
+
+            //handling the error
+            var errorTout = setTimeout(function() {
+                alert("Something went wrong");
+            }, 9000);
+            clearTimeout(errorTout);
+
+            var panOptions = {
+                position: nearStreetLoc,
+                pov: {
+                    heading: head,
+                    // changes the angle of camera whether to look up or down
+                    pitch: 15
+                }
+            };
+            var pano = new google.maps.StreetViewPanorama(
+                document.getElementById('pano'), panOptions
+            );
+        } else {
+            flag = false;
+        }
+    }
     // ensure that  the infowindow is not already opened on this marker.
     if (infowindow.markr != markr) {
         // Clear  infowindow content to give the streetview time to load.
@@ -233,33 +260,6 @@ function popInfoWindow(markr, infowindow) {
                 alert('CALLBACK Error in Html Detected');
             } else alert("Failed to Resolve Request:" + textStatus + "\n");
         });
-    }
-    //check the status if ok then get the streetview and set the panorama
-    function getStreetView(data, status) {
-        if (status == google.maps.StreetViewStatus.OK) {
-            var nearStreetLoc = data.location.latLng;
-            var head = google.maps.geometry.spherical.computeHeading(nearStreetLoc, markr.position);
-
-            //handling the error
-            var errorTout = setTimeout(function() {
-                alert("Something went wrong");
-            }, 9000);
-            clearTimeout(errorTout);
-
-            var panOptions = {
-                position: nearStreetLoc,
-                pov: {
-                    heading: head,
-                    // changes the angle of camera whether to look up or down
-                    pitch: 15
-                }
-            };
-            var pano = new google.maps.StreetViewPanorama(
-                document.getElementById('pano'), panOptions
-            );
-        } else {
-            flag = false;
-        }
     }
 }
 
