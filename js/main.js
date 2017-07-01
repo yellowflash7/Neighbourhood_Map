@@ -212,9 +212,6 @@ function popInfoWindow(markr, infowindow) {
         //streetViewService.getPanoramaByLocation(markr.position, radii, getStreetView);
         // open the infowindow on marker
         infowindow.open(map, markr);
-        var wikiTout = setTimeout(function() {
-            wikiElem = 'failed to get wikipedia resources';
-        }, 8000);
 
         var wikiUrl = 'https://en.wikipedia.org/w/api.php?origin=*&action=opensearch&search=' +
             markr.title + '&format=json';
@@ -251,7 +248,6 @@ function popInfoWindow(markr, infowindow) {
                     );
 
                 }
-                clearTimeout(wikiTout);
             }
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status === 0) {
