@@ -6,9 +6,9 @@ var locs = [
     { id: 0, title: 'Shimla', location: { lat: 31.104605, lng: 77.173424 } },
     { id: 1, title: 'Kullu', location: { lat: 31.957851, lng: 77.109459 } },
     { id: 2, title: 'Manali', location: { lat: 32.2396, lng: 77.1887 } },
-    { id: 3, title: 'Dharamsala', location: { lat: 32.22006, lng: 76.32013 } },
+    { id: 3, title: 'Dalhousie', location: { lat: 32.5387, lng: 75.9710 } },
     { id: 4, title: 'Palampur', location: { lat: 32.1109, lng: 76.5363 } },
-    { id: 5, title: 'Kangra', location: { lat: 32.0998, lng: 76.2691 } }
+    { id: 5, title: 'Hamirpur', location: { lat: 31.6862, lng: 76.5213 } }
 ];
 
 function getMarkerIcon(markercolor) {
